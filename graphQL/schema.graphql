@@ -1,0 +1,40 @@
+type User {
+    _id: ID!
+    name: String!
+    email: String!
+    city: String!
+    age: Int!
+    role: String!
+  }
+  
+  type Book {
+    _id: ID!
+    title: String!
+    genre: String!
+    author: String!
+    publishingYear: Int!
+  }
+  
+  type AuthPayload {
+    token: String!
+  }
+  
+  type Query {
+    users: [User!]!
+    books: [Book!]!
+  }
+  
+  type Mutation {
+    registerUser(name: String!, email: String!, pass: String!, city: String!, age: Int!): User!
+    loginUser(email: String!, pass: String!): AuthPayload!
+    logoutUser: String
+    addBook(title: String!, genre: String!, author: String!, publishingYear: Int!): Book!
+    updateBook(id: ID!, title: String, genre: String, author: String, publishingYear: Int): Book!
+    deleteBook(id: ID!): String
+  }
+  
+  schema {
+    query: Query
+    mutation: Mutation
+  }
+  
